@@ -89,12 +89,13 @@ body{
         flex-shrink:0;
         justify-content: space-evenly;
         margin-bottom: 30px;
-        width: inherit;
+        /* width: auto; */
     }
-    .statement{
+    .opening{
         align-self: center;
+        width: 1000px;
     }
-    .experience{
+    .resume{
         justify-content:center;
     }
 }
