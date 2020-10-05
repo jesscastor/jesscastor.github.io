@@ -78,7 +78,8 @@ body{
 
 @media screen and (max-width: 1000px){
     .header{
-        background: rgb(255, 255, 255); }
+        background: rgb(255, 255, 255); 
+        color: #1c005e;}
     
     .container{
         justify-content:center;
