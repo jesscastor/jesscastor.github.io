@@ -298,6 +298,53 @@ function submitNewPerson() {
 }
 
 /*
+ ------ ADD NEW  Group ------
+*/
+function submitNewGroup() {
+
+  console.log("Called submitNewGroup");
+  let Name = document.getElementById("addName").value;
+
+  console.log("Name:" + Name);
+  data = { name: Name };
+
+  //console.log(JSON.stringify(data))
+  let groupURL = "http://localhost:4000/person";
+  const fetchPromise = fetch(groupURL, {
+    method: 'POST', headers: {
+      'Content-Type': 'application/json'
+
+    }, body: JSON.stringify(data)
+  });
+
+  let groupId;
+  fetchPromise
+    .then((response) => {
+      return response.json();
+    })
+    .then((group) => {
+      console.log("Here POST group");
+      console.log(group);
+
+      let message = "ERROR";
+      if (typeof group.id !== "undefined") {
+       gName = group.data.Name;
+        groupId = group.id;
+        message = "Message: " + group.message + " Name: " + Name + "<br>groupId: " + groupId + "<br> ";
+      }
+      else if(typeof group !== "undefined"){
+        message = "Message: " + group.message ;
+      }
+      document.getElementById("postNewGroupContent").innerHTML = message;
+    })
+    .catch((err) => {
+      console.log(err);
+      document.getElementById("postNewGroupContent").innerHTML = "Invalid group : " + data.Name;
+    });
+
+}
+
+/*
    ------------   Code for onload of page ------------
    1) Fills out drop down boxes
 */
